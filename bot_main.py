@@ -88,6 +88,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="Markdown",
     )
 
+async def responder_hola(update, context):
+    text = (update.message.text or "").lower()
+    if "hola" in text or "hi" in text or "hello" in text:
+        await update.message.reply_text("¡Hola! 👋 Envíame una foto del ticket para empezar.")
+    elif "gracias" in text or "thank you" in text:
+        await update.message.reply_text("¡De nada! 😊 Si necesitas algo más, solo envíame otra foto.")
+
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Recibe la foto, hace OCR y prepara el borrador."""
     try:
